@@ -12,5 +12,8 @@
     "mongoose": "*"
   },
   "author": "jorge8989",
-  "license": "ISC"
+  "license": "ISC",
+  "engines": {
+    "node": "5.12.0"
+  }
 }

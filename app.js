@@ -6,8 +6,9 @@ Genre = require('./models/genre');
 Book = require('./models/book');
 
 app.use(bodyParser.json());
+app.set('port', (process.env.PORT || 3000));
 
-mongoose.connect('mongodb://localhost/bookstore')
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/bookstore')
 var db = mongoose.connection;
 
 app.get('/', function(req, res) {
@@ -99,5 +100,6 @@ app.delete('/api/books/:_id', function(req, res) {
   })
 });
 
-app.listen(3000);
-console.log('running on port 3000');
+app.listen(app.get('port'), function() {
+  console.log('Node app is running on port', app.get('port'));
+});
